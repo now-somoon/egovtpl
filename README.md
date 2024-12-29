@@ -1,3 +1,12 @@
+# 협업
+- https://somoon.dooray.com/wiki/3910951159392827179/3910951163007180542
+- vcs : git@github.com:now-somoon/egovtpl.git
+# 개발 환경
+- java : jdk-17.0.0.1
+- mysql : MySQL 8.0
+- jdbc : Globals.mysql.DriverClassName=net.sf.log4jdbc.DriverSpy
+- 
+
 # 표준프레임워크 공통컴포넌트 4.2.0
 
 ![java](https://img.shields.io/badge/java-007396?style=for-the-badge&logo=JAVA&logoColor=white)

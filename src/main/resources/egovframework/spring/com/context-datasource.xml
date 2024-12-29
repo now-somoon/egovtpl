@@ -25,7 +25,7 @@
 		<property name="url" value="${Globals.mysql.Url}" />
 		<property name="username" value="${Globals.mysql.UserName}"/>
 		<!-- 암호화(Crypto) 관련 서비스 https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:rte2:fdl:crypto_simplify_v3_8 참조 -->
-		<property name="password" value="#{egovEnvCryptoService.getPassword()}"/>
+		<property name="password" value="${Globals.mysql.Password}"/>
 	</bean>
 	</beans>
 	

@@ -16,10 +16,10 @@ public class EgovEnvCryptoUserTest {
 	public static void main(String[] args) {
 		 
 		String[] arrCryptoString = { 
-		"userId",         //데이터베이스 접속 계정 설정
-		"userPassword",   //데이터베이스 접속 패드워드 설정
-		"url",            //데이터베이스 접속 주소 설정
-		"databaseDriver"  //데이터베이스 드라이버
+		"style_app",         //데이터베이스 접속 계정 설정
+		"Stylejobs12!@",   //데이터베이스 접속 패드워드 설정
+		"jdbc:log4jdbc:mysql://127.0.0.1:3306/style_dev",            //데이터베이스 접속 주소 설정
+		"net.sf.log4jdbc.DriverSpy"  //데이터베이스 드라이버
               };
  
  

@@ -15,18 +15,17 @@ package egovframework.com.cmm;
  * limitations under the License.
  */
 
-import java.io.IOException;
-import java.io.Reader;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
+import org.egovframe.rte.psl.orm.ibatis.support.AbstractLobTypeHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.support.lob.LobCreator;
 import org.springframework.jdbc.support.lob.LobHandler;
 
-import org.egovframe.rte.psl.orm.ibatis.support.AbstractLobTypeHandler;
+import java.io.IOException;
+import java.io.Reader;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * iBATIS TypeHandler implementation for Strings that get mapped to CLOBs.
@@ -43,14 +42,6 @@ import org.egovframe.rte.psl.orm.ibatis.support.AbstractLobTypeHandler;
  * @author Juergen Hoeller
  * @since 1.1.5
  * @see org.springframework.orm.ibatis.SqlMapClientFactoryBean#setLobHandler
- * 
- * 
- *    수정일     수정자      수정내용
- *   -------    --------    ---------------------------
- *   2017.03.03  조성원      시큐어코딩(ES)-부적절한 예외 처리[CWE-253, CWE-440, CWE-754]
- *   2022.11.11  김혜준      시큐어코딩 처리
- * 
- * 
  */
 @SuppressWarnings("deprecation")
 public class AltibaseClobStringTypeHandler extends AbstractLobTypeHandler {
@@ -79,35 +70,37 @@ public class AltibaseClobStringTypeHandler extends AbstractLobTypeHandler {
 		lobCreator.setClobAsString(ps, index, (String) value);
 	}
 
+
 	protected Object getResultInternal(ResultSet rs, int index, LobHandler lobHandler)
 			throws SQLException {
 
-		Reader rd = null;
 		StringBuffer read_data = new StringBuffer("");
 	    int read_length;
+
 		char [] buf = new char[1024];
 
+		Reader rd =  lobHandler.getClobAsCharacterStream(rs, index);
 	    try {
-	    	// 2022.11.11 시큐어코딩 처리
-	    	rd =  lobHandler.getClobAsCharacterStream(rs, index);
-	    	while( (read_length=rd.read(buf))  != -1) {
+			while( (read_length=rd.read(buf))  != -1) {
 				read_data.append(buf, 0, read_length);
 			}
 	    } catch (IOException ie) {
-	    	throw new SQLException(ie.getMessage());
+	    	LOGGER.debug("ie: {}", ie);//SQLException sqle = new SQLException(ie.getMessage());
+	    	//throw sqle;
     	// 2011.10.10 보안점검 후속조치
 	    } finally {
 		    if (rd != null) {
-				try {
-				    rd.close();
-				//2017.03.03 	조성원 	시큐어코딩(ES)-부적절한 예외 처리[CWE-253, CWE-440, CWE-754]
-				} catch (IOException ignore) {
-					LOGGER.error("["+ ignore.getClass() +"] Connection Close : " + ignore.getMessage());
-				}
+			try {
+			    rd.close();
+			} catch (Exception ignore) {
+				LOGGER.debug("IGNORE: {}", ignore.getMessage());
+			}
 		    }
 		}
 
 	    return read_data.toString();
+
+		//return lobHandler.getClobAsString(rs, index);
 	}
 
 	public Object valueOf(String s) {

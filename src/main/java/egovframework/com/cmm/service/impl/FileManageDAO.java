@@ -1,11 +1,10 @@
 package egovframework.com.cmm.service.impl;
 
+import egovframework.com.cmm.service.FileVO;
+import org.springframework.stereotype.Repository;
+
 import java.util.Iterator;
 import java.util.List;
-
-import egovframework.com.cmm.service.FileVO;
-
-import org.springframework.stereotype.Repository;
 
 /**
  * @Class Name : EgovFileMngDAO.java
@@ -32,15 +31,15 @@ public class FileManageDAO extends EgovComAbstractDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	public String insertFileInfs(List<FileVO> fileList) throws Exception {
-		FileVO vo = fileList.get(0);
+	public String insertFileInfs(List<?> fileList) throws Exception {
+		FileVO vo = (FileVO) fileList.get(0);
 		String atchFileId = vo.getAtchFileId();
 
 		insert("FileManageDAO.insertFileMaster", vo);
 
-		Iterator<FileVO> iter = fileList.iterator();
+		Iterator<?> iter = fileList.iterator();
 		while (iter.hasNext()) {
-			vo = iter.next();
+			vo = (FileVO) iter.next();
 
 			insert("FileManageDAO.insertFileDetail", vo);
 		}
@@ -65,11 +64,12 @@ public class FileManageDAO extends EgovComAbstractDAO {
 	 * @param fileList
 	 * @throws Exception
 	 */
-	public void updateFileInfs(List<FileVO> fileList) throws Exception {
+	public void updateFileInfs(List<?> fileList) throws Exception {
 		FileVO vo;
-		Iterator<FileVO> iter = fileList.iterator();
+		Iterator<?> iter = fileList.iterator();
 		while (iter.hasNext()) {
-			vo = iter.next();
+			vo = (FileVO) iter.next();
+
 			insert("FileManageDAO.insertFileDetail", vo);
 		}
 	}
@@ -80,11 +80,11 @@ public class FileManageDAO extends EgovComAbstractDAO {
 	 * @param fileList
 	 * @throws Exception
 	 */
-	public void deleteFileInfs(List<FileVO> fileList) throws Exception {
-		Iterator<FileVO> iter = fileList.iterator();
+	public void deleteFileInfs(List<?> fileList) throws Exception {
+		Iterator<?> iter = fileList.iterator();
 		FileVO vo;
 		while (iter.hasNext()) {
-			vo = iter.next();
+			vo = (FileVO) iter.next();
 
 			delete("FileManageDAO.deleteFileDetail", vo);
 		}
@@ -107,8 +107,9 @@ public class FileManageDAO extends EgovComAbstractDAO {
 	 * @return
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unchecked")
 	public List<FileVO> selectFileInfs(FileVO vo) throws Exception {
-		return selectList("FileManageDAO.selectFileList", vo);
+		return (List<FileVO>) list("FileManageDAO.selectFileList", vo);
 	}
 
 	/**
@@ -150,8 +151,9 @@ public class FileManageDAO extends EgovComAbstractDAO {
 	 * @return
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unchecked")
 	public List<FileVO> selectFileListByFileNm(FileVO fvo) throws Exception {
-		return selectList("FileManageDAO.selectFileListByFileNm", fvo);
+		return (List<FileVO>) list("FileManageDAO.selectFileListByFileNm", fvo);
 	}
 
 	/**
@@ -172,7 +174,8 @@ public class FileManageDAO extends EgovComAbstractDAO {
 	 * @return
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unchecked")
 	public List<FileVO> selectImageFileList(FileVO vo) throws Exception {
-		return selectList("FileManageDAO.selectImageFileList", vo);
+		return (List<FileVO>) list("FileManageDAO.selectImageFileList", vo);
 	}
 }

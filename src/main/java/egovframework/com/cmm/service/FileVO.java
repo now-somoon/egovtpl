@@ -1,6 +1,8 @@
 package egovframework.com.cmm.service;
 
-import egovframework.com.cmm.ComDefaultVO;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import java.io.Serializable;
 
 /**
  * @Class Name : FileVO.java
@@ -17,10 +19,13 @@ import egovframework.com.cmm.ComDefaultVO;
  * @see
  *
  */
-@SuppressWarnings("serial")
-public class FileVO extends ComDefaultVO {
+public class FileVO implements Serializable {
 
     /**
+	 *  serialVersion UID
+	 */
+	private static final long serialVersionUID = -287950405903719128L;
+	/**
      * 첨부파일 아이디
      */
     public String atchFileId = "";
@@ -59,7 +64,7 @@ public class FileVO extends ComDefaultVO {
 
     /**
      * atchFileId attribute를 리턴한다.
-     * 
+     *
      * @return the atchFileId
      */
     public String getAtchFileId() {
@@ -68,7 +73,7 @@ public class FileVO extends ComDefaultVO {
 
     /**
      * atchFileId attribute 값을 설정한다.
-     * 
+     *
      * @param atchFileId
      *            the atchFileId to set
      */
@@ -78,7 +83,7 @@ public class FileVO extends ComDefaultVO {
 
     /**
      * creatDt attribute를 리턴한다.
-     * 
+     *
      * @return the creatDt
      */
     public String getCreatDt() {
@@ -87,7 +92,7 @@ public class FileVO extends ComDefaultVO {
 
     /**
      * creatDt attribute 값을 설정한다.
-     * 
+     *
      * @param creatDt
      *            the creatDt to set
      */
@@ -97,7 +102,7 @@ public class FileVO extends ComDefaultVO {
 
     /**
      * fileCn attribute를 리턴한다.
-     * 
+     *
      * @return the fileCn
      */
     public String getFileCn() {
@@ -106,7 +111,7 @@ public class FileVO extends ComDefaultVO {
 
     /**
      * fileCn attribute 값을 설정한다.
-     * 
+     *
      * @param fileCn
      *            the fileCn to set
      */
@@ -116,7 +121,7 @@ public class FileVO extends ComDefaultVO {
 
     /**
      * fileExtsn attribute를 리턴한다.
-     * 
+     *
      * @return the fileExtsn
      */
     public String getFileExtsn() {
@@ -125,7 +130,7 @@ public class FileVO extends ComDefaultVO {
 
     /**
      * fileExtsn attribute 값을 설정한다.
-     * 
+     *
      * @param fileExtsn
      *            the fileExtsn to set
      */
@@ -135,7 +140,7 @@ public class FileVO extends ComDefaultVO {
 
     /**
      * fileMg attribute를 리턴한다.
-     * 
+     *
      * @return the fileMg
      */
     public String getFileMg() {
@@ -144,7 +149,7 @@ public class FileVO extends ComDefaultVO {
 
     /**
      * fileMg attribute 값을 설정한다.
-     * 
+     *
      * @param fileMg
      *            the fileMg to set
      */
@@ -154,7 +159,7 @@ public class FileVO extends ComDefaultVO {
 
     /**
      * fileSn attribute를 리턴한다.
-     * 
+     *
      * @return the fileSn
      */
     public String getFileSn() {
@@ -163,7 +168,7 @@ public class FileVO extends ComDefaultVO {
 
     /**
      * fileSn attribute 값을 설정한다.
-     * 
+     *
      * @param fileSn
      *            the fileSn to set
      */
@@ -173,7 +178,7 @@ public class FileVO extends ComDefaultVO {
 
     /**
      * fileStreCours attribute를 리턴한다.
-     * 
+     *
      * @return the fileStreCours
      */
     public String getFileStreCours() {
@@ -182,7 +187,7 @@ public class FileVO extends ComDefaultVO {
 
     /**
      * fileStreCours attribute 값을 설정한다.
-     * 
+     *
      * @param fileStreCours
      *            the fileStreCours to set
      */
@@ -192,7 +197,7 @@ public class FileVO extends ComDefaultVO {
 
     /**
      * orignlFileNm attribute를 리턴한다.
-     * 
+     *
      * @return the orignlFileNm
      */
     public String getOrignlFileNm() {
@@ -201,7 +206,7 @@ public class FileVO extends ComDefaultVO {
 
     /**
      * orignlFileNm attribute 값을 설정한다.
-     * 
+     *
      * @param orignlFileNm
      *            the orignlFileNm to set
      */
@@ -211,7 +216,7 @@ public class FileVO extends ComDefaultVO {
 
     /**
      * streFileNm attribute를 리턴한다.
-     * 
+     *
      * @return the streFileNm
      */
     public String getStreFileNm() {
@@ -220,12 +225,19 @@ public class FileVO extends ComDefaultVO {
 
     /**
      * streFileNm attribute 값을 설정한다.
-     * 
+     *
      * @param streFileNm
      *            the streFileNm to set
      */
     public void setStreFileNm(String streFileNm) {
 	this.streFileNm = streFileNm;
     }
-	
+
+    /**
+     * toString 메소드를 대치한다.
+     */
+    public String toString() {
+	return ToStringBuilder.reflectionToString(this);
+    }
+
 }

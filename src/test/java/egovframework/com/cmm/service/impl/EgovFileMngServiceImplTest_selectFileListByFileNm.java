@@ -28,10 +28,10 @@ public class EgovFileMngServiceImplTest_selectFileListByFileNm extends EgovTestV
 
 		// given
 		FileVO fvo = new FileVO();
-		fvo.setFirstIndex(0);
-		fvo.setRecordCountPerPage(10);
-		fvo.setSearchCondition("streFileNm");
-		fvo.setSearchKeyword("저장파일명");
+//		fvo.setFirstIndex(0);
+//		fvo.setRecordCountPerPage(10);
+//		fvo.setSearchCondition("streFileNm");
+//		fvo.setSearchKeyword("저장파일명");
 
 		// when
 		Map<String, Object> fileListByFileNm = egovFileMngService.selectFileListByFileNm(fvo);
@@ -64,10 +64,10 @@ public class EgovFileMngServiceImplTest_selectFileListByFileNm extends EgovTestV
 
 		// given
 		FileVO fvo = new FileVO();
-		fvo.setFirstIndex(0);
-		fvo.setRecordCountPerPage(10);
-		fvo.setSearchCondition("orignlFileNm");
-		fvo.setSearchKeyword("원파일명");
+//		fvo.setFirstIndex(0);
+//		fvo.setRecordCountPerPage(10);
+//		fvo.setSearchCondition("orignlFileNm");
+//		fvo.setSearchKeyword("원파일명");
 
 		// when
 		Map<String, Object> fileListByFileNm = egovFileMngService.selectFileListByFileNm(fvo);

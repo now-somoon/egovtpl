@@ -15,14 +15,9 @@ package egovframework.com.cmm.web;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
-import javax.servlet.ServletContext;
-
+import egovframework.com.cmm.service.EgovProperties;
+import egovframework.let.utl.fcc.service.EgovFileUploadUtil;
 import org.apache.commons.fileupload.FileItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,9 +28,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import egovframework.com.cmm.exception.EgovFileExtensionException;
-import egovframework.com.cmm.service.EgovProperties;
-import egovframework.com.utl.fcc.service.EgovFileUploadUtil;
+import javax.servlet.ServletContext;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 실행환경의 파일업로드 처리를 위한 기능 클래스
@@ -134,13 +132,12 @@ public class EgovMultipartResolver extends CommonsMultipartResolver {
 						LOGGER.debug("No file name.");
 					} else {
 						if ("".equals(fileExtension)) { // 확장자 없는 경우 처리 불가
-							throw new EgovFileExtensionException("[No file extension] File extension not allowed.","errors.file.extension.none");
+							throw new SecurityException("[No file extension] File extension not allowed.");
 						}
 						if ((whiteListFileUploadExtensions+".").contains("."+fileExtension.toLowerCase()+".")) {
 							LOGGER.debug("File extension allowed.");
 						} else {
-							LOGGER.info("["+fileExtension+"] File extension not allowed.{} OK");
-							throw new EgovFileExtensionException("["+fileExtension+"] File extension not allowed.","errors.file.extension.deny");
+							throw new SecurityException("["+fileExtension+"] File extension not allowed.");
 						}
 					}
 				}

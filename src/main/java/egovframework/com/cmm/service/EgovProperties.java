@@ -21,7 +21,7 @@ import egovframework.com.utl.fcc.service.EgovStringUtil;
 
 /**
  * EgovProperties 클래스
- * 
+ *
  * <p>
  *  Description : properties값들을 파일로부터 읽어와   Globals클래스의 정적변수로 로드시켜주는 클래스로
  *   문자열 정보 기준으로 사용할 전역변수를 시스템 재시작으로 반영할 수 있도록 한다.
@@ -56,12 +56,12 @@ public class EgovProperties {
 	//public static final String GLOBALS_PROPERTIES_FILE = System.getProperty("user.home") + FILE_SEPARATOR + "egovProps" +FILE_SEPARATOR + "globals.properties";
 
 	public static final String RELATIVE_PATH_PREFIX = EgovProperties.class.getResource("") == null ? ""
-		: EgovProperties.class.getResource("").getPath().substring(0,
+			: EgovProperties.class.getResource("").getPath().substring(0,
 			EgovProperties.class.getResource("").getPath().lastIndexOf("com"));
 	//public static final String RELATIVE_PATH_PREFIX = EgovProperties.class.getProtectionDomain().getCodeSource().getLocation().getPath().substring(0,EgovProperties.class.getProtectionDomain().getCodeSource().getLocation().getPath().indexOf("WEB-INF/classes/")+"WEB-INF/classes/".length())+"egovframework/";
 
 	public static final String GLOBALS_PROPERTIES_FILE = RELATIVE_PATH_PREFIX + "egovProps" + FILE_SEPARATOR
-		+ "globals.properties";
+			+ "globals.properties";
 
 	/**
 	 * 인자로 주어진 문자열을 Key값으로 하는 프로퍼티 값을 반환한다(Globals.java 전용)
@@ -171,7 +171,7 @@ public class EgovProperties {
 		Properties props = new Properties();
 
 		try (FileInputStream fis = new FileInputStream(EgovWebUtil.filePathBlackList(fileName));
-			BufferedInputStream bis = new BufferedInputStream(fis);) {
+			 BufferedInputStream bis = new BufferedInputStream(fis);) {
 			props.load(bis);
 		} catch (FileNotFoundException fne) {
 			LOGGER.debug("Property file not found.", fne);

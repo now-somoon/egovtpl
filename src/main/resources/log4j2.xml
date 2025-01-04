@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE xml>
 <Configuration>
     <Appenders>
         <Console name="console" target="SYSTEM_OUT">
             <PatternLayout pattern="[log4j]%d %5p [%c] %m%n" />
         </Console>
+        <File name="AccessLog" fileName="E:/dev/logs/stylejobs/access_log.log">
+            <PatternLayout pattern="%d{ISO8601} %m%n" />
+        </File>
     </Appenders>
+
     <Loggers>
         <Logger name="java.sql" level="DEBUG" additivity="false">
             <AppenderRef ref="console" />
@@ -23,7 +26,11 @@
 	    <Logger name="org.springframework" level="INFO" additivity="false">
 	        <AppenderRef ref="console" />
 	    </Logger>
-        <Root level="INFO">
+        <Logger name="org.apache.catalina.valves.AccessLogValve" level="info" additivity="false">
+            <AppenderRef ref="AccessLog" />
+            <AppenderRef ref="console" />
+        </Logger>
+        <Root level="ERROR">
             <AppenderRef ref="console" />
         </Root>
     </Loggers>

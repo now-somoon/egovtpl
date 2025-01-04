@@ -1,8 +1,8 @@
 package egovframework.com.cmm;
 
-import java.io.Serializable;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import java.io.Serializable;
 
 /**
  * @Class Name : ComDefaultVO.java
@@ -16,27 +16,28 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  *  @author 공통서비스 개발팀 조재영
  *  @since 2009.02.01
  *  @version 1.0
- *  @see 
- *  
+ *  @see
+ *
  */
-@SuppressWarnings("serial")
 public class ComDefaultVO implements Serializable {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	/** 검색조건 */
     private String searchCondition = "";
-    
+
     /** 검색Keyword */
     private String searchKeyword = "";
-    
+
     /** 검색사용여부 */
     private String searchUseYn = "";
-    
+
     /** 현재페이지 */
     private int pageIndex = 1;
-    
-    /** 페이지개수 */
+
+    /** 페이지갯수 */
     private int pageUnit = 10;
-    
+
     /** 페이지사이즈 */
     private int pageSize = 10;
 
@@ -48,13 +49,13 @@ public class ComDefaultVO implements Serializable {
 
     /** recordCountPerPage */
     private int recordCountPerPage = 10;
-    
+
     /** 검색KeywordFrom */
-    private String searchKeywordFrom = "";    
+    private String searchKeywordFrom = "";
 
 	/** 검색KeywordTo */
-    private String searchKeywordTo = "";  
-    
+    private String searchKeywordTo = "";
+
 	public int getFirstIndex() {
 		return firstIndex;
 	}
@@ -131,7 +132,7 @@ public class ComDefaultVO implements Serializable {
         return ToStringBuilder.reflectionToString(this);
     }
 
-    
+
     /**
 	 * searchKeywordFrom attribute를 리턴한다.
 	 * @return String

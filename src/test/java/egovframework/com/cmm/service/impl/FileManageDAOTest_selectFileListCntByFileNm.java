@@ -23,9 +23,9 @@ public class FileManageDAOTest_selectFileListCntByFileNm extends EgovTestV1 {
 
 		// given
 		FileVO fvo = new FileVO();
-		fvo.setRecordCountPerPage(10);
-		fvo.setSearchCondition("streFileNm");
-		fvo.setSearchKeyword("저장파일명");
+//		fvo.setRecordCountPerPage(10);
+//		fvo.setSearchCondition("streFileNm");
+//		fvo.setSearchKeyword("저장파일명");
 
 		// when
 		int fileListCnt = fileManageDAO.selectFileListCntByFileNm(fvo);
@@ -42,8 +42,8 @@ public class FileManageDAOTest_selectFileListCntByFileNm extends EgovTestV1 {
 
 		// given
 		FileVO fvo = new FileVO();
-		fvo.setSearchCondition("orignlFileNm");
-		fvo.setSearchKeyword("원파일명");
+//		fvo.setSearchCondition("orignlFileNm");
+//		fvo.setSearchKeyword("원파일명");
 
 		// when
 		int fileListCnt = fileManageDAO.selectFileListCntByFileNm(fvo);

@@ -1157,6 +1157,7 @@
 						birthYear = "19";
 				}
             	
+            	birthYear = (ihidnum.charAt(7) <= "2") ? "19" : "20";
 				birthYear += ihidnum.substr(0, 2);
 				birthMonth = ihidnum.substr(2, 2) - 1;
 				birthDate = ihidnum.substr(4, 2);
@@ -1228,7 +1229,321 @@
           }
           ]]>
           </javascript>
-          
+      </validator>
+
+      <!--
+        패스워드 validation
+        1. password1 : 8~20자 이내
+        2. password2 : 한글,특수문자,띄어쓰기는 안됨
+        3. password3 : 연속된 문자나 순차적인 문자 4개이상 사용금지
+        4. password4 : 반복문자나 숫자 연속 4개이상 사용금지
+      -->
+      <validator name="password1"
+            classname="org.egovframe.rte.ptl.mvc.validation.RteFieldChecks"
+               method="validatePassword1"
+         methodParams="java.lang.Object,
+                       org.apache.commons.validator.ValidatorAction,
+                       org.apache.commons.validator.Field,
+                       org.springframework.validation.Errors"
+
+              depends=""
+                  msg="errors.password1">
+           <javascript><![CDATA[
+           function validatePassword1(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oPassword = new password1();
+                for (x in oPassword) {
+                    var field = form[oPassword[x][0]];
+                    if (field.type == 'password') {
+                        if (trim(field.value).length==0 || !checkPassword1(field)) {
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oPassword[x][1];
+                            bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return bValid;
+          }
+
+            function checkPassword1(pwd) {
+                p_pass = pwd.value;
+
+                if (pwd.value.length < 8 || pwd.value.length > 20 ){
+
+                        pwd.value ="";
+                        pwd.focus();
+                        return false;
+                }
+                return pwd;
+            }
+           ]]>
+           </javascript>
+      </validator>
+
+      <validator name="password2"
+            classname="org.egovframe.rte.ptl.mvc.validation.RteFieldChecks"
+               method="validatePassword2"
+         methodParams="java.lang.Object,
+                       org.apache.commons.validator.ValidatorAction,
+                       org.apache.commons.validator.Field,
+                       org.springframework.validation.Errors"
+
+              depends=""
+                  msg="errors.password2">
+           <javascript><![CDATA[
+           function validatePassword2(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oPassword = new password2();
+                for (x in oPassword) {
+                    var field = form[oPassword[x][0]];
+                    if (field.type == 'password') {
+                        if (trim(field.value).length==0 || !checkPassword2(field)) {
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oPassword[x][1];
+                            bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return bValid;
+          }
+
+            function checkPassword2(pwd) {
+                var str = pwd.value;
+				for (var i=0; i < str .length; i++) {
+				    ch_char = str .charAt(i);
+				    ch = ch_char.charCodeAt();
+				        if( (ch >= 33 && ch <= 47) || (ch >= 58 && ch <= 64) || (ch >= 91 && ch <= 96) || (ch >= 123 && ch <= 126) ) {
+				            return false;
+				        }
+				}
+                return pwd;
+            }
+           ]]>
+           </javascript>
+      </validator>
+
+      <validator name="password3"
+            classname="org.egovframe.rte.ptl.mvc.validation.RteFieldChecks"
+               method="validatePassword3"
+         methodParams="java.lang.Object,
+                       org.apache.commons.validator.ValidatorAction,
+                       org.apache.commons.validator.Field,
+                       org.springframework.validation.Errors"
+
+              depends=""
+                  msg="errors.password3">
+           <javascript><![CDATA[
+           function validatePassword3(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oPassword = new password3();
+                for (x in oPassword) {
+                    var field = form[oPassword[x][0]];
+                    if (field.type == 'password') {
+                        if (trim(field.value).length==0 || !checkPassword3(field)) {
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oPassword[x][1];
+                            bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return bValid;
+          }
+
+            function checkPassword3(pwd) {
+                p_pass = pwd.value;
+                var cnt=0,cnt2=1,cnt3=1;
+                var temp="";
+
+                for(i=0;i < p_pass.length;i++){
+                        temp_pass1 = p_pass.charAt(i);
+                        next_pass = (parseInt(temp_pass1.charCodeAt(0)))+1;
+                        temp_p = p_pass.charAt(i+1);
+                        temp_pass2 = (parseInt(temp_p.charCodeAt(0)));
+                        if (temp_pass2 == next_pass)
+                            cnt2 = cnt2 + 1;
+                        else
+                            cnt2 = 1;
+                        if (temp_pass1 == temp_p)
+                            cnt3 = cnt3 + 1;
+                        else
+                            cnt3 = 1;
+                        if (cnt2 > 3) break;
+                        if (cnt3 > 3) break;
+                }
+                if (cnt2 > 3){
+                        pwd.value ="";
+                        pwd.focus();
+                        return false;
+                }
+                return pwd;
+            }
+           ]]>
+           </javascript>
+      </validator>
+
+      <validator name="password4"
+            classname="org.egovframe.rte.ptl.mvc.validation.RteFieldChecks"
+               method="validatePassword4"
+         methodParams="java.lang.Object,
+                       org.apache.commons.validator.ValidatorAction,
+                       org.apache.commons.validator.Field,
+                       org.springframework.validation.Errors"
+
+              depends=""
+                  msg="errors.password4">
+           <javascript><![CDATA[
+           function validatePassword4(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oPassword = new password4();
+                for (x in oPassword) {
+                    var field = form[oPassword[x][0]];
+                    if (field.type == 'password') {
+                        if (trim(field.value).length==0 || !checkPassword4(field)) {
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oPassword[x][1];
+                            bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                    focusField.focus();
+                    alert(fields.join('\n'));
+                }
+                return bValid;
+          }
+
+            function checkPassword4(pwd) {
+                p_pass = pwd.value;
+                var cnt=0,cnt2=1,cnt3=1;
+                var temp="";
+
+                for(i=0;i < p_pass.length;i++){
+                        temp_pass1 = p_pass.charAt(i);
+                        next_pass = (parseInt(temp_pass1.charCodeAt(0)))+1;
+                        temp_p = p_pass.charAt(i+1);
+                        temp_pass2 = (parseInt(temp_p.charCodeAt(0)));
+                        if (temp_pass2 == next_pass)
+                            cnt2 = cnt2 + 1;
+                        else
+                            cnt2 = 1;
+                        if (temp_pass1 == temp_p)
+                            cnt3 = cnt3 + 1;
+                        else
+                            cnt3 = 1;
+                        if (cnt2 > 3) break;
+                        if (cnt3 > 3) break;
+                }
+                if (cnt3 > 3){
+                        pwd.value ="";
+                        pwd.focus();
+                        return false;
+                }
+                return pwd;
+            }
+           ]]>
+           </javascript>
+      </validator>
+      	  <validator name="minInteger"
+            classname="org.egovframe.rte.ptl.mvc.validation.RteFieldChecks"
+               method="validateMinInteger"
+         methodParams="java.lang.Object,
+                       org.apache.commons.validator.ValidatorAction,
+                       org.apache.commons.validator.Field,
+                       org.springframework.validation.Errors"
+                  msg="errors.minInteger">
+          <javascript><![CDATA[
+          function validateMinInteger(form){
+               var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oInteger = new minInteger();
+                for (x in oInteger) {
+                	var field = form[oInteger[x][0]];
+
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'select-one' ||
+                        field.type == 'radio') {
+
+                        var value = '';
+						// get field's value
+						if (field.type == "select-one") {
+							var si = field.selectedIndex;
+						    if (si >= 0) {
+							    value = field.options[si].value;
+						    }
+						} else {
+							value = field.value;
+						}
+
+                        if (value.length > 0) {
+
+                            if (!isOK(value)) {
+                                bValid = false;
+                                if (i == 0) {
+	                                focusField = field;
+	                            }
+						        fields[i++] = oInteger[x][1];
+
+                            } else {
+	                            var iValue = parseInt(value);
+	                            if (isNaN(iValue) || !(iValue >= -2147483648 && iValue <= 2147483647)) {
+	                                if (i == 0) {
+	                                    focusField = field;
+	                                }
+	                                fields[i++] = oInteger[x][1];
+	                                bValid = false;
+	                           }
+                           }
+                       }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   alert(fields.join('\n'));
+                }
+                return bValid;
+            }
+
+            function isOK(vv){
+				if (vv >0) return true;
+				else return false;
+          }
+          ]]>
+          </javascript>
       </validator>
       
    </global>

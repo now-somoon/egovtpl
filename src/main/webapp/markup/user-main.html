@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>잡코리아</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .main-banner {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .job-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .job-card img {
+            width: 100%;
+            height: auto;
+        }
+        .job-card .card-body {
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="bg-light py-3 border-bottom">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="h4">잡코리아</h1>
+                </div>
+                <div class="col-md-6 text-right">
+                    <button class="btn btn-primary">로그인</button>
+                    <button class="btn btn-secondary">회원가입</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Section -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">메인</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">채용정보</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">기업별 채용</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">헤드헌터</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner Section -->
+    <section class="main-banner">
+        <div class="container">
+            <img src="https://via.placeholder.com/1200x150" alt="Banner" class="img-fluid">
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="py-5">
+        <div class="container">
+            <h2 class="h5 mb-4">추천 채용</h2>
+            <div class="row">
+                <!-- Job Card 1 -->
+                <div class="col-md-4">
+                    <div class="job-card">
+                        <img src="https://via.placeholder.com/350x200" alt="Job Image">
+                        <div class="card-body">
+                            <h5 class="card-title">2024년 정규직 채용</h5>
+                            <p class="card-text">회사: Kolon</p>
+                            <p class="card-text">위치: 서울</p>
+                            <a href="#" class="btn btn-primary btn-block">자세히 보기</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Job Card 2 -->
+                <div class="col-md-4">
+                    <div class="job-card">
+                        <img src="https://via.placeholder.com/350x200" alt="Job Image">
+                        <div class="card-body">
+                            <h5 class="card-title">프론트엔드 개발자 모집</h5>
+                            <p class="card-text">회사: Coupang</p>
+                            <p class="card-text">위치: 경기</p>
+                            <a href="#" class="btn btn-primary btn-block">자세히 보기</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Job Card 3 -->
+                <div class="col-md-4">
+                    <div class="job-card">
+                        <img src="https://via.placeholder.com/350x200" alt="Job Image">
+                        <div class="card-body">
+                            <h5 class="card-title">2025년 신입 채용</h5>
+                            <p class="card-text">회사: Bithumb</p>
+                            <p class="card-text">위치: 서울</p>
+                            <a href="#" class="btn btn-primary btn-block">자세히 보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 잡코리아. 모든 권리 보유.</p>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="#" class="text-white">개인정보처리방침</a>
+                    <span class="mx-2">|</span>
+                    <a href="#" class="text-white">이용약관</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

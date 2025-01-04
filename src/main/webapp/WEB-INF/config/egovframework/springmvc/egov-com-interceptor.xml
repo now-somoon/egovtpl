@@ -24,6 +24,9 @@
 	        -->
 	        <mvc:interceptor>
 	            <mvc:mapping path="/**/*.do" />
+				<mvc:mapping path="/cop/com/*.do"/>
+				<mvc:mapping path="/cop/bbs/*Master*.do"/>
+				<mvc:mapping path="/uat/uia/*.do"/>
 	            <mvc:exclude-mapping path="/uat/uia/**" />
 	            <mvc:exclude-mapping path="/index.do" />
 	            <mvc:exclude-mapping path="/cmm/fms/getImage.do" /> <!-- 로그인화면이미지 -->
@@ -33,6 +36,8 @@
 	            <mvc:exclude-mapping path="/EgovTop.do" />
 	            <mvc:exclude-mapping path="/EgovBottom.do" />
 	            <mvc:exclude-mapping path="/EgovModal.do" />
+				<mvc:exclude-mapping path="/uat/uia/actionLogin.do"/>
+				<mvc:exclude-mapping path="/uat/uia/egovLoginUsr.do"/>
 	            <bean class="egovframework.com.cmm.interceptor.AuthenticInterceptor">
 		           	<!-- 관리자 권한 Ant style Pattern List -->				
 					<property name="adminAuthPatternList">

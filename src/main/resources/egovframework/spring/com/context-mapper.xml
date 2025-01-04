@@ -6,7 +6,7 @@
 	<bean id="egov.lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" lazy-init="true" />
 
 	<!-- Mybatis setup for Mybatis Database Layer -->
-	<bean id="egov.sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">		
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="egov.dataSource"/>
 		<property name="configLocation" value="classpath:/egovframework/mapper/config/mapper-config.xml" />
 		
@@ -22,4 +22,6 @@
 		<constructor-arg ref="egov.sqlSession"/>
 	</bean>
 	
+	<alias name="sqlSession" alias="egov.sqlSession" />
+
 </beans>

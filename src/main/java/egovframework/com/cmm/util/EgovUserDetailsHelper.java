@@ -1,6 +1,7 @@
 package egovframework.com.cmm.util;
 
 import egovframework.com.cmm.LoginVO;
+import egovframework.com.cmm.service.EgovUserDetailsService;
 import org.egovframe.rte.fdl.string.EgovObjectUtil;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -28,8 +29,18 @@ import java.util.List;
  */
 
 public class EgovUserDetailsHelper {
-	
-		/**
+
+	static EgovUserDetailsService egovUserDetailsService;
+
+	public EgovUserDetailsService getEgovUserDetailsService() {
+		return egovUserDetailsService;
+	}
+
+	public void setEgovUserDetailsService(EgovUserDetailsService egovUserDetailsService) {
+		EgovUserDetailsHelper.egovUserDetailsService = egovUserDetailsService;
+	}
+
+	/**
 		 * 인증된 사용자객체를 VO형식으로 가져온다.
 		 * @return Object - 사용자 ValueObject
 		 */

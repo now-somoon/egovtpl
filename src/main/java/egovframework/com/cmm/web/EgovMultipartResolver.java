@@ -17,7 +17,7 @@ package egovframework.com.cmm.web;
  */
 
 import egovframework.com.cmm.service.EgovProperties;
-import egovframework.let.utl.fcc.service.EgovFileUploadUtil;
+import egovframework.com.utl.fcc.service.EgovFileUploadUtil;
 import org.apache.commons.fileupload.FileItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

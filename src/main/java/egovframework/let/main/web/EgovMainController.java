@@ -1,8 +1,9 @@
 package egovframework.let.main.web;
 
 import egovframework.com.cmm.ComDefaultVO;
-import egovframework.let.cop.bbs.service.BoardVO;
-import egovframework.let.cop.bbs.service.EgovBBSManageService;
+import egovframework.com.cop.bbs.service.BoardVO;
+import egovframework.com.cop.bbs.service.EgovArticleService;
+import egovframework.com.cop.bbs.service.EgovBBSMasterService;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -36,9 +37,12 @@ public class EgovMainController {
 	/**
 	 * EgovBBSManageService
 	 */
-	@Resource(name = "EgovBBSManageService")
-    private EgovBBSManageService bbsMngService;
+	@Resource(name = "EgovBBSMasterService")
+    private EgovBBSMasterService egovBBSMasterService;
 
+
+	@Resource(name = "egovArticleService")
+	private EgovArticleService egovArticleService;
 	/**
 	 * 메인 페이지에서 각 업무 화면으로 연계하는 기능을 제공한다.
 	 *
@@ -80,11 +84,12 @@ public class EgovMainController {
 		boardVO.setLastIndex(paginationInfo.getLastRecordIndex());
 		boardVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
-		Map<String, Object> map = bbsMngService.selectBoardArticles(boardVO, "BBSA02");
+		Map<String, Object> map = egovArticleService.selectArticleList(boardVO);
 		model.addAttribute("notiList", map.get("resultList"));
 
 		boardVO.setBbsId("BBSMSTR_BBBBBBBBBBBB");
-		map = bbsMngService.selectBoardArticles(boardVO, "BBSA02");
+		boardVO.setBbsAttrbCode("BBSA02");
+		map = egovArticleService.selectArticleList(boardVO);
 		model.addAttribute("galList", map.get("resultList"));
 
 		// 공지사항 메인컨텐츠 조회 끝 -----------------------------------

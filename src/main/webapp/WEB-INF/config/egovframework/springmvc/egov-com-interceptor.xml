@@ -24,9 +24,6 @@
 	        -->
 	        <mvc:interceptor>
 	            <mvc:mapping path="/**/*.do" />
-				<mvc:mapping path="/cop/com/*.do"/>
-				<mvc:mapping path="/cop/bbs/*Master*.do"/>
-				<mvc:mapping path="/uat/uia/*.do"/>
 	            <mvc:exclude-mapping path="/uat/uia/**" />
 	            <mvc:exclude-mapping path="/index.do" />
 	            <mvc:exclude-mapping path="/cmm/fms/getImage.do" /> <!-- 로그인화면이미지 -->

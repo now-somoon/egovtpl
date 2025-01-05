@@ -63,7 +63,7 @@ public class EgovComIndexController {
 	@Resource(name = "loginService")
 	private EgovLoginService loginService;
 
-	@RequestMapping("/index.do")
+	@RequestMapping("/adminFunctionIndex.do")
 	public String index(ModelMap model) {
 		return "egovframework/com/cmm/EgovUnitMain";
 	}
